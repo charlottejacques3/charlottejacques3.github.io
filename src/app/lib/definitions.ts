@@ -8,13 +8,18 @@ export type Experience = {
   alt: string,
 }
 
+export type Link = {
+  name: string,
+  url: string
+}
+
 export type Project = {
   id: number,
   title: string,
   tagline: string,
   techStack: string[],
   image: string,
-  github: string,
+  links: Link[],
   description: string,
 }
 

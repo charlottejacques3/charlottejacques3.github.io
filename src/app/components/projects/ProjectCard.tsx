@@ -3,6 +3,7 @@ import { Project } from '@/app/lib/definitions'
 import TechIcon from '../TechIcon'
 import Image from 'next/image'
 import { LearnMoreButton } from './LearnMoreButton'
+import LinksDropdown from './LinksDropdown'
 import { BasicButton } from '../BasicButton'
 
 interface ProjectCardProps {
@@ -22,9 +23,12 @@ export const ProjectCard:React.FC<ProjectCardProps> = ({proj}) => {
       <p>{proj.tagline}</p>
       <div className='grow'/> 
 
-      <div className='flex mt-4'>
-        <LearnMoreButton proj={proj} className='mr-2'/>
-        <BasicButton text='GitHub' isButton={false} href={proj.github}/>
+      <div className='flex gap-2 mt-4'>
+        <LearnMoreButton proj={proj} className='flex-1'/>
+        {proj.links.length == 1 ? 
+          <BasicButton text={proj.links[0].name} isButton={false} href={proj.links[0].url} className='flex-1'/>
+        : <LinksDropdown proj={proj}/>
+        }
       </div>
     </div>
   )
